@@ -32,6 +32,14 @@ namespace xadrez_console
                 }
             }
         }
+
+        public static PosicaoXadrez lerPosicaoXadrez()
+        {
+            string posic = Console.ReadLine();
+            char coluna = posic[0];
+            int linha = int.Parse(posic[1] + ""); // "" -> força a ser uma string
+            return new PosicaoXadrez(coluna, linha);
+        }
         public static void imprimirPeca(Peca peca)
         {
             if(peca.cor == Cor.Branca)

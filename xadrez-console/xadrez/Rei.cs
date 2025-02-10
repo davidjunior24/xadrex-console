@@ -12,5 +12,6 @@ namespace xadrez
         {
             return "R";
         }
+
     }
 }
