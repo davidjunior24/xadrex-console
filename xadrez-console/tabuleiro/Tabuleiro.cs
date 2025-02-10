@@ -1,5 +1,6 @@
 ﻿using System;
 using xadrez_console;
+using xadrez;
 
 
 namespace tabuleiro
