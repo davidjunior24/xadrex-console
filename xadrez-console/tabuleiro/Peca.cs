@@ -1,19 +1,22 @@
 ﻿using System;
+using xadrez_console;
 
 namespace tabuleiro
 {
     class Peca
     {
         public Cor cor {  get; set; }
-        public Posicao posicao { get; protected set; }
+        public Posicao posicao { get; set; }
         public int qtdMovimentos { get; protected set; }
-        public Tabuleiro tabuleiro { get; protected set; }
+        public Tabuleiro tab { get; protected set; }
 
-        public Peca(Cor cor, Posicao posicao, int qtdMovimentos)
+        public Peca(Tabuleiro tab, Cor cor)
         {
+            this.posicao = null;
             this.cor = cor;
-            this.posicao = posicao;
-            this.qtdMovimentos = qtdMovimentos;
+            this.tab = tab;
+            this.qtdMovimentos = 0;
         }
+        
     }
 }

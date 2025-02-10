@@ -1,4 +1,5 @@
 ﻿using System;
+using MyApp;
 using tabuleiro;
 namespace xadrez_console
 {
@@ -6,20 +7,18 @@ namespace xadrez_console
     {
         public static void imprimirTabuleiro(Tabuleiro T)
         {
-           
-
             for (int i = 0; i < T.linhas; i++)
             {
 
                 for (int j = 0; j < T.colunas; j++)
                 {
-                    if(T.peca(i,j) == null)
+                    if (T.peca(i, j) == null)
                     {
                         Console.Write("- ");
                     }
                     else
                     {
-                        Console.WriteLine(T.peca(i, j) + " ");
+                        Console.Write(T.peca(i, j) + " ");
                     }
                 }
                 Console.WriteLine();
