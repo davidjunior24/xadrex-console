@@ -3,7 +3,7 @@ using xadrez_console;
 
 namespace tabuleiro
 {
-    class Peca
+    abstract class Peca
     {
         public Cor cor {  get; set; }
         public Posicao posicao { get; set; }
@@ -21,6 +21,7 @@ namespace tabuleiro
         {
             qtdMovimentos++;
         }
+        public abstract bool[,] movimentosPossiveis();
         
     }
 }

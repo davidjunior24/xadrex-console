@@ -18,8 +18,15 @@ namespace MyApp
                     Console.Clear();
                     Tela.imprimirTabuleiro(partida.tab);
 
+                    Console.WriteLine();
                     Console.Write("Origem: ");
                     Posicao origem = Tela.lerPosicaoXadrez().toPosicao();
+
+                    Console.Clear();
+                    bool[,] possiveisMovimentos = partida.tab.peca(origem).movimentosPossiveis();
+                    Tela.imprimirTabuleiro(partida.tab, possiveisMovimentos);
+
+                    Console.WriteLine();
                     Console.Write("Destino: ");
                     Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
 
