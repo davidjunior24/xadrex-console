@@ -1,10 +1,26 @@
 ﻿using System;
-using MyApp;
+using xadrez;
 using tabuleiro;
+using System.Runtime.ConstrainedExecution;
 namespace xadrez_console
 {
     class Tela
     {
+        public static void imprimirPartida(PartidaDeXadrez partida)
+        {
+            Tela.imprimirTabuleiro(partida.tab);
+            Console.WriteLine();
+
+            Console.WriteLine("Turno atual: " + partida.turno);
+            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            Console.WriteLine();
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            Tela.imprimirPecasCapturadas(partida, Cor.Branca);
+            Console.Write("Pretas: ");
+            Tela.imprimirPecasCapturadas(partida, Cor.Preta);
+
+        }
         public static void imprimirTabuleiro(Tabuleiro T)
         {
             int m = 8;
@@ -37,7 +53,7 @@ namespace xadrez_console
                     {
                         Console.BackgroundColor = corAlterada;
                     }
-                    
+
                     imprimirPeca(T.peca(i, j));
                     Console.BackgroundColor = corOriginal;
                 }
@@ -77,6 +93,22 @@ namespace xadrez_console
                     Console.ForegroundColor = aux;
                 }
             }
+        }
+        public static void imprimirPecasCapturadas(PartidaDeXadrez p, Cor cor)
+        {
+            ConsoleColor aux = Console.ForegroundColor;
+            if (cor == Cor.Preta)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+            Console.Write("[");
+            foreach (Peca x in p.pecasCapturadas(cor))
+            {
+                Console.Write(" " + x + ", ");
+            }
+            Console.Write("]");
+            Console.ForegroundColor = aux;
+            Console.WriteLine();
         }
     }
 }

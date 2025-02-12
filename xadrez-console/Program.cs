@@ -18,11 +18,7 @@ namespace MyApp
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-
-                        Console.WriteLine("Turno atual: " + partida.turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                        Tela.imprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
@@ -39,6 +35,8 @@ namespace MyApp
                         partida.validarPosicaoDeDestino(origem, destino);
 
                         partida.realizaJogada(origem, destino);
+
+                       
                     }
                     catch(TabuleiroException e)
                     {
