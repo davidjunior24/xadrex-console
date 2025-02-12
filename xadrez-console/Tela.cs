@@ -10,20 +10,26 @@ namespace xadrez_console
         {
             Tela.imprimirTabuleiro(partida.tab);
             Console.WriteLine();
-
-            Console.WriteLine("Turno atual: " + partida.turno);
-            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
-            if (partida.xeque == true)
+            if (!partida.terminada)
             {
-                Console.WriteLine("XEQUE!");
-            }
+                Console.WriteLine("Turno atual: " + partida.turno);
+                Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                if (partida.xeque == true)
+                {
+                    Console.WriteLine("XEQUE!");
+                }
 
-            Console.WriteLine();
-            Console.WriteLine("Peças capturadas: ");
-            Console.Write("Brancas: ");
-            Tela.imprimirPecasCapturadas(partida, Cor.Branca);
-            Console.Write("Pretas: ");
-            Tela.imprimirPecasCapturadas(partida, Cor.Preta);
+                Console.WriteLine();
+                Console.WriteLine("Peças capturadas: ");
+                Console.Write("Brancas: ");
+                Tela.imprimirPecasCapturadas(partida, Cor.Branca);
+                Console.Write("Pretas: ");
+                Tela.imprimirPecasCapturadas(partida, Cor.Preta);
+            }
+            else
+            {
+                Console.WriteLine("XEQUEMATE! O VENCEDOR É O JOGADOR DAS PEÇAS " + partida.jogadorAtual);
+            }
         }
         public static void imprimirTabuleiro(Tabuleiro T)
         {

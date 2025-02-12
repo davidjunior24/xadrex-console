@@ -44,6 +44,8 @@ namespace MyApp
                         Console.ReadLine();
                     }
                 }
+                Console.Clear();
+                Tela.imprimirPartida(partida);
 
 
             }

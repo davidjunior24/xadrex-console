@@ -31,7 +31,7 @@ namespace xadrez
                 {
                     break; //ENCERRA CASO ENCONTRE UMA PEÇA INIMIGA NA VERTICAL ACIMA
                 }
-                pos.linha -= 1;
+                pos.linha = pos.linha - 1;
             }
 
             //direita
@@ -43,7 +43,7 @@ namespace xadrez
                 {
                     break; //ENCERRA CASO ENCONTRE UMA PEÇA INIMIGA NA HORIZONTAL DIREITA
                 }
-                pos.coluna += 1;
+                pos.coluna = pos.coluna + 1;
             }
 
             //abaixo
@@ -55,7 +55,7 @@ namespace xadrez
                 {
                     break; //ENCERRA CASO ENCONTRE UMA PEÇA INIMIGA NA VERTICAL ABAIXO
                 }
-                pos.linha += 1;
+                pos.linha = pos.linha + 1;
             }
 
             //esquerda
@@ -67,7 +67,7 @@ namespace xadrez
                 {
                     break; //ENCERRA CASO ENCONTRE UMA PEÇA INIMIGA NA HORIZONTAL ESQUERDA
                 }
-                pos.coluna -= 1;
+                pos.coluna = pos.coluna - 1;
             }
             return mat;
 

@@ -41,7 +41,7 @@ namespace xadrez
         {
             Peca p = tab.retirarPeca(destino);
             p.decrementarQtdMovimento();
-            if(pCap != null)
+            if (pCap != null)
             {
                 tab.adicionarPeca(pCap, destino);
                 capturadas.Remove(pCap);
@@ -66,8 +66,15 @@ namespace xadrez
             {
                 xeque = false;
             }
-            turno++;
-            mudaJogador();
+            if (estaemXequeMate(adversaria(jogadorAtual)))
+            {
+                terminada = true;
+            }
+            else
+            {
+                turno++;
+                mudaJogador();
+            }
         }
 
         public void validarPosicaoDeOrigem(Posicao pos)
@@ -139,7 +146,7 @@ namespace xadrez
         }
         private Cor adversaria(Cor cor)
         {
-            if(cor == Cor.Branca)
+            if (cor == Cor.Branca)
             {
                 return Cor.Preta;
             }
@@ -150,9 +157,9 @@ namespace xadrez
         }
         private Peca rei(Cor cor)
         {
-            foreach(Peca x  in pecasEmJogo(cor))
+            foreach (Peca x in pecasEmJogo(cor))
             {
-                if(x is Rei)
+                if (x is Rei)
                 {
                     return x;
                 }
@@ -162,7 +169,7 @@ namespace xadrez
         public bool estaEmXeque(Cor cor) //LÓGICA PARA VERIFICAR SE ESTÁ EM XEQUE
         {
             Peca R = rei(cor);
-            foreach(Peca x in pecasEmJogo(adversaria(cor)))
+            foreach (Peca x in pecasEmJogo(adversaria(cor)))
             {
                 bool[,] mat = x.movimentosPossiveis();
                 if (mat[R.posicao.linha, R.posicao.coluna])
@@ -172,6 +179,37 @@ namespace xadrez
             }
             return false;
         }
+        public bool estaemXequeMate(Cor cor)
+        {
+            if (!estaEmXeque(cor))
+            {
+                return false;
+            }
+            foreach (Peca x in pecasEmJogo(cor)) //TODOS OS MOVIMENTOS DAS PEÇAS DO JOGADORATUAL PARA LIVRÁ-LO DO XEQUEMATE
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                for (int i = 0; i < tab.linhas; i++)
+                {
+                    for (int j = 0; j < tab.colunas; j++)
+                    {
+                        if (mat[i, j])
+                        {
+                            Posicao origem = x.posicao;
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = executarMovimento(origem, destino);
+                            bool teste = estaEmXeque(cor);
+                            desfazerMovimento(origem, destino, pecaCapturada);
+                            if (!teste)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
         private void colocarPecas()
         {
 
