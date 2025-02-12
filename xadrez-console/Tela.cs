@@ -13,13 +13,17 @@ namespace xadrez_console
 
             Console.WriteLine("Turno atual: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            if (partida.xeque == true)
+            {
+                Console.WriteLine("XEQUE!");
+            }
+
             Console.WriteLine();
             Console.WriteLine("Peças capturadas: ");
             Console.Write("Brancas: ");
             Tela.imprimirPecasCapturadas(partida, Cor.Branca);
             Console.Write("Pretas: ");
             Tela.imprimirPecasCapturadas(partida, Cor.Preta);
-
         }
         public static void imprimirTabuleiro(Tabuleiro T)
         {

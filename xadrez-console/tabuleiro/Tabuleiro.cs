@@ -11,7 +11,7 @@ namespace tabuleiro
         public int colunas { get; set; }
         private Peca[,] pecas { get; set; }
 
-        public Tabuleiro(int linhas, int colunas)
+        public Tabuleiro(int linhas, int colunas)//TAMANHO
         {
             this.linhas = linhas;
             this.colunas = colunas;
