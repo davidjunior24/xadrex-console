@@ -12,10 +12,10 @@ namespace tabuleiro
 
         public Peca(Tabuleiro tab, Cor cor)
         {
-            this.posicao = null;
+            posicao = null;
             this.cor = cor;
             this.tab = tab;
-            this.qtdMovimentos = 0;
+            qtdMovimentos = 0;
         }
         public void incrementarQtdMovimento()
         {

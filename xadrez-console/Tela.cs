@@ -28,7 +28,8 @@ namespace xadrez_console
             }
             else
             {
-                Console.WriteLine("XEQUEMATE! O VENCEDOR É O JOGADOR DAS PEÇAS " + partida.jogadorAtual);
+                Console.WriteLine("XEQUEMATE!");
+                Console.WriteLine("Vencedor: " + partida.jogadorAtual);
             }
         }
         public static void imprimirTabuleiro(Tabuleiro T)
