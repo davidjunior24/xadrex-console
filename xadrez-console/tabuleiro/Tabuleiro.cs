@@ -1,48 +1,39 @@
-﻿using System;
-using xadrez_console;
-using xadrez;
+﻿namespace tabuleiro {
+    class Tabuleiro {
 
-
-namespace tabuleiro
-{
-    class Tabuleiro
-    {
         public int linhas { get; set; }
         public int colunas { get; set; }
-        private Peca[,] pecas { get; set; }
+        private Peca[,] pecas;
 
-        public Tabuleiro(int linhas, int colunas)//TAMANHO
-        {
+        public Tabuleiro(int linhas, int colunas) {
             this.linhas = linhas;
             this.colunas = colunas;
-            pecas = new Peca[linhas, colunas];
+            pecas = new Peca[linhas, colunas]; 
         }
-        public Peca peca(int linha, int coluna)
-        {
+
+        public Peca peca(int linha, int coluna) {
             return pecas[linha, coluna];
         }
-        public Peca peca(Posicao pos)
-        {
-            return pecas[pos.linha,pos.coluna];
+
+        public Peca peca(Posicao pos) {
+            return pecas[pos.linha, pos.coluna];
         }
-        public bool existePeca(Posicao pos)
-        {
+
+        public bool existePeca(Posicao pos) {
             validarPosicao(pos);
             return peca(pos) != null;
         }
-        public void adicionarPeca(Peca p, Posicao pos)
-        {
-            if (existePeca(pos))
-            {
+
+        public void colocarPeca(Peca p, Posicao pos) {
+            if (existePeca(pos)) {
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
             }
             pecas[pos.linha, pos.coluna] = p;
             p.posicao = pos;
         }
-        public Peca retirarPeca(Posicao pos)
-        {
-            if(peca(pos) == null)
-            {
+
+        public Peca retirarPeca(Posicao pos) {
+            if (peca(pos) == null) {
                 return null;
             }
             Peca aux = peca(pos);
@@ -50,21 +41,18 @@ namespace tabuleiro
             pecas[pos.linha, pos.coluna] = null;
             return aux;
         }
-        public bool posicaoValida(Posicao pos)
-        {
-            if(pos.linha < 0 || pos.linha >= linhas || pos.coluna  < 0 || pos.coluna >= colunas)
-            {
+
+        public bool posicaoValida(Posicao pos) {
+            if (pos.linha<0 || pos.linha>=linhas || pos.coluna<0 || pos.coluna>=colunas) {
                 return false;
             }
             return true;
         }
-        public void validarPosicao(Posicao pos)
-        {
-            if (!posicaoValida(pos))
-            {
+
+        public void validarPosicao(Posicao pos) {
+            if (!posicaoValida(pos)) {
                 throw new TabuleiroException("Posição inválida!");
             }
         }
-        
     }
 }
