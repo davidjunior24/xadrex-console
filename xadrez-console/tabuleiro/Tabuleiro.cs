@@ -1,15 +1,10 @@
-﻿using System;
-using xadrez_console;
-using xadrez;
-
-
-namespace tabuleiro
+﻿namespace tabuleiro
 {
     class Tabuleiro
     {
         public int linhas { get; set; }
         public int colunas { get; set; }
-        private Peca[,] pecas { get; set; }
+        private Peca[,] pecas;
 
         public Tabuleiro(int linhas, int colunas)//TAMANHO
         {
@@ -23,7 +18,7 @@ namespace tabuleiro
         }
         public Peca peca(Posicao pos)
         {
-            return pecas[pos.linha,pos.coluna];
+            return pecas[pos.linha, pos.coluna];
         }
         public bool existePeca(Posicao pos)
         {
